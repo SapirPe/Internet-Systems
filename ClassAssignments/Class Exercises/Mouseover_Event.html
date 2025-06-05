@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouseover Event</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        text-align: center;
+        line-height: 100px;
+        font-weight: bold;
+        color: white;
+        font-size: 15px;
+      }
+      #red-box {
+        transition: background-color 2s ease;
+        background-color: red;
+      }
+      #blue-box {
+        transition: background-color 2s ease;
+        background-color: blue;
+      }
+      #green-box {
+        transition: background-color 2s ease;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="red-box" class="box">Red</div>
+    <div id="blue-box" class="box">Blue</div>
+    <div id="green-box" class="box">Green</div>
+    <input id="input" type="password" />
+    <div>
+      <label> Your input: </label>
+      <label class="textShow"></label>
+    </div>
+
+    <script>
+      const redBox = document.getElementById("red-box");
+      const blueBox = document.getElementById("blue-box");
+      const greenBox = document.getElementById("green-box");
+      const input = document.getElementById("input");
+      const textShow = document.querySelector(".textShow");
+
+      //mouseover
+      const mouseoverRed = redBox.addEventListener("mouseover", () => {
+        redBox.style.backgroundColor = "#eba1a1";
+        redBox.style.borderRadius = "15%";
+        redBox.style.fontSize = "20px";
+      });
+      const mouseoverBlue = blueBox.addEventListener("mouseover", () => {
+        blueBox.style.backgroundColor = "#8b9ceb";
+      });
+      const mouseoverGreen = greenBox.addEventListener("mouseover", () => {
+        greenBox.style.backgroundColor = "#c8f0c8";
+      });
+
+      //mouseout
+      const mouseoutRed = redBox.addEventListener("mouseout", () => {
+        redBox.style.backgroundColor = "red";
+        redBox.style.borderRadius = "0%";
+        redBox.style.fontSize = "15px";
+      });
+      const mouseoutBlue = blueBox.addEventListener("mouseout", () => {
+        blueBox.style.backgroundColor = "blue";
+      });
+      const mouseoutGreen = greenBox.addEventListener("mouseout", () => {
+        greenBox.style.backgroundColor = "green";
+      });
+
+      //keyup
+      input.addEventListener("keyup", (e) => {
+        textShow.innerHTML += e.key;
+      });
+    </script>
+  </body>
+</html>

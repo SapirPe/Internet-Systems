@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Preferences</title>
+    <style>
+      .dark {
+        background-color: rgb(32, 32, 32);
+        color: aliceblue;
+      }
+      .light {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>User Preferences Panel</h2>
+    <div>
+      <h3>Theme Settings</h3>
+      <select id="themeSelect">
+        <option value="light">Light Mode</option>
+        <option value="dark">Dark Mode</option>
+      </select>
+      <h3>Current Session</h3>
+      <button id="pageViewButton">Simulate Page View</button>
+      <p>Page views this session: <span id="pageViews">0</span></p>
+    </div>
+
+    <script>
+      // TODO: Complete these functions
+      function saveTheme() {
+        // Write code to:
+        // 1. Get selected theme
+        document.body.classList.remove("light", "dark");
+        const selectedTheme = themeSelect.value;
+        // 2. Save to localStorage
+        localStorage.setItem("theme", selectedTheme);
+        // 3. Apply theme to page
+        document.body.classList.add(selectedTheme);
+      }
+
+      function incrementPageViews() {
+        // Write code to:
+        // 1. Get current page views from sessionStorage
+        let savedPageView = sessionStorage.getItem("numPageViews") || 0;
+        // 2. Increment count
+        savedPageView++;
+        // 3. Save back to sessionStorage
+        sessionStorage.setItem("numPageViews", savedPageView);
+        // 4. Update display
+        const pageViews = document.getElementById("pageViews");
+        pageViews.innerText = savedPageView;
+      }
+
+      function loadPreferences() {
+        // Write code to:
+        // 1. Load theme from localStorage V
+        // 2. Load page views from sessionStorage
+        localStorage.setItem(
+          "numPageViews",
+          sessionStorage.getItem("numPageViews")
+        );
+        // 3. Apply saved settings
+        document.body.classList.add(localStorage.getItem("theme"));
+      }
+
+      // Event Listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeSelect = document.getElementById("themeSelect"); //V
+        const pageViewButton = document.getElementById("pageViewButton");
+
+        themeSelect.addEventListener("change", saveTheme);
+        pageViewButton.addEventListener("click", incrementPageViews);
+
+        // Load initial preferences
+        loadPreferences();
+      });
+    </script>
+  </body>
+</html>

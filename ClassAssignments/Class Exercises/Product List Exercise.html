@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product List Renderer</title>
+    <style>
+      .product {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ddd;
+      }
+      .price {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Product List Exercise</h2>
+
+    <!-- Form to add new products -->
+    <div>
+      <input type="text" id="productName" placeholder="Product name" />
+      <input type="number" id="productPrice" placeholder="Price" />
+      <button id="addButton">Add Product</button>
+    </div>
+
+    <!-- Container for rendered products -->
+    <div id="productList"></div>
+
+    <script>
+      // Initial products
+      const products = [
+        { name: "Laptop", price: 999 },
+        { name: "Mouse", price: 29.99 },
+      ];
+
+      function renderProducts(products) {
+        const container = document.getElementById("productList");
+        container.innerHTML = `<ul>`;
+        products.forEach((element) => {
+          container.innerHTML += `
+            <li class="product">Product name: "${element.name}",   price: ${element.price}</li>`;
+        });
+        container.innerHTML += `</ul>`;
+      }
+
+      // TODO: Complete this function to add new products
+      function addProduct() {
+        const productName = document.getElementById("productName");
+        const productPrice = document.getElementById("productPrice");
+        products.push({ name: productName.value, price: productPrice.value });
+        renderProducts(products);
+      }
+
+      // Event Listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        const addButton = document.getElementById("addButton");
+        addButton.addEventListener("click", addProduct);
+
+        // Initial render
+        renderProducts(products);
+      });
+    </script>
+  </body>
+</html>

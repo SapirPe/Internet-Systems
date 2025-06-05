@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Colors</title>
+
+    <style type="text/css">
+      #btn {
+        width: 200px;
+        height: 100px;
+        font-size: 50px;
+      }
+
+      select {
+        width: 200px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">Show</button>
+
+    <div id="d1">
+      <select>
+        <option value="-1">choose color</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+      </select>
+    </div>
+    <script>
+      const btn = document.getElementById("btn");
+      const selectedColor = document.querySelector("select");
+      btn.addEventListener("click", () => {
+        if (btn.innerHTML === "Hide") {
+          btn.innerHTML = "Show";
+          document.getElementById("d1").style.visibility = "visible";
+          btn.style.backgroundColor = "initial";
+          selectedColor.value = -1;
+        } else {
+          if (selectedColor.value != -1) {
+            btn.innerHTML = "Hide";
+            document.getElementById("d1").style.visibility = "hidden";
+            btn.style.backgroundColor = selectedColor.value;
+          } else {
+            alert("please choose a color");
+          }
+        }
+      });
+
+      selectedColor.addEventListener("change", (e) => {});
+    </script>
+  </body>
+</html>

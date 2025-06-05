@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Delegation</title>
+  </head>
+  <body>
+    <table id="data-table" border="1">
+      <tr>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+      </tr>
+      <tr>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+      </tr>
+    </table>
+    <script>
+      const table = document.getElementById("data-table");
+      const td = document.getElementsByTagName("td");
+      table.addEventListener("click", (e) => {
+        for (let i = 0; i < td.length; i++) {
+          td[i].style.backgroundColor = "";
+        }
+        if (e.target && e.target.matches("td")) {
+          e.target.style.backgroundColor = "yellow";
+        }
+      });
+    </script>
+  </body>
+</html>
