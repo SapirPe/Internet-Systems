@@ -22,7 +22,7 @@ Each folder contains a different assignment from the course, including:
 - **Class Exercises**  
   HTML files with tasks completed during class.
 
-- **`js Exercise - given HTML`**  
+- **js Exercise - given HTML**  
   A folder with exam practice exercises.  
   The HTML and CSS code were provided, and I implemented the JavaScript logic.
 
